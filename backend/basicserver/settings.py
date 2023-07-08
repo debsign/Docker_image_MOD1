@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m73y#s@%-n^)x-5*4ytenmq^bq^n-4r5+z!sne-_$sj28ons!9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '34.175.189.132']
 
 
 # Application definition
@@ -78,18 +78,18 @@ WSGI_APPLICATION = 'basicserver.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cookbook',
-        'USER': 'root',
-        'PASSWORD': 'deb361990',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'cookbook',
+    #     'USER': 'root',
+    #     'PASSWORD': 'deb361990',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
 }
 
 

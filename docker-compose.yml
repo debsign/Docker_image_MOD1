@@ -1,0 +1,23 @@
+version: '3'
+services:
+  recipes:
+    container_name: recipes
+    image: recipes-backend:0.0.1
+    ports:
+      - 80:8000
+    environment:
+      - DJANGO_DB_ENGINE=django.db.backends.mysql 
+      - DJANGO_DB_NAME=cookbook 
+      - DJANGO_DB_USER=root 
+      - DJANGO_DB_PASSWORD=deb361990 
+      - DJANGO_DB_HOST=mysql 
+      - DJANGO_DB_PORT=3306
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql-recipes
+    image: mysql:8.0.33
+    environment: 
+      - MYSQL_ROOT_PASSWORD=deb361990
+      - MYSQL_DATABASE=cookbook

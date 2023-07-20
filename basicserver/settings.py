@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os 
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m73y#s@%-n^)x-5*4ytenmq^bq^n-4r5+z!sne-_$sj28ons!9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '34.175.189.132']
+ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOSTS','*')]
 
 
 # Application definition
@@ -78,10 +78,22 @@ WSGI_APPLICATION = 'basicserver.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # La ddbb con variables
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.environ.get('DJANGO_DB_ENGINE','django.db.backends.sqlite3'),
+        'NAME': os.environ.get('DJANGO_DB_NAME','db.sqlite3'),
+        'USER': os.environ.get('DJANGO_DB_USER',''),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD',''),
+        'HOST': os.environ.get('DJANGO_DB_HOST',''),
+        'PORT': os.environ.get('DJANGO_DB_PORT',''),
     }
+    # La ddbb en sqlite
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
+    # La ddbb en local
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'cookbook',

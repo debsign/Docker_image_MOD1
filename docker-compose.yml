@@ -7,7 +7,7 @@ services:
       - 80:8000
     environment:
       - DJANGO_DB_ENGINE=django.db.backends.mysql 
-      - DJANGO_DB_NAME=cookbook 
+      - DJANGO_DB_NAME=compose-db 
       - DJANGO_DB_USER=root 
       - DJANGO_DB_PASSWORD=deb361990 
       - DJANGO_DB_HOST=mysql 
@@ -20,4 +20,8 @@ services:
     image: mysql:8.0.33
     environment: 
       - MYSQL_ROOT_PASSWORD=deb361990
-      - MYSQL_DATABASE=cookbook
+      - MYSQL_DATABASE=compose-db
+    ports:
+      - 3366:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
